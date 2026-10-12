@@ -8,7 +8,6 @@ TOOLNAME=$1
 SEND="off"
 echo "Building $TOOLNAME"
 [[ ! -z "$2" ]] && SEND="on"
-TEST_SERVER="192.168.139.53"
 $GO11 clean
 if [ -z "$TOOLNAME" ]; then
   echo "Please choose a tool name"
@@ -31,11 +30,4 @@ if [ "$RETVAL" == "0" ]
         rm -rf $TOOLNAME
 fi
 
-if [ "$SEND" == "on" ]; then
-	echo "Sending 192.168.139.42"
-	sshpass -p "a" scp /usr/local/fpanel/core/bin/$TOOLNAME root@192.168.139.42:/usr/local/fpanel/core/bin/
-#	echo "Sending 192.168.139.53"
-#	sshpass -p "a" scp /usr/local/fpanel/core/bin/$TOOLNAME root@192.168.139.53:/usr/local/fpanel/core/bin/
-#	echo "Sending 192.168.139.62"
-#	sshpass -p "a" scp /usr/local/fpanel/core/bin/$TOOLNAME root@192.168.139.62:/usr/local/fpanel/core/bin/
-fi
+
